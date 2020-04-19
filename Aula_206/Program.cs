@@ -7,17 +7,6 @@ namespace Aula_206
 {
     class Program
     {
-        /*
-            Na forma anterior nossa classe Product não fica fechada
-            para alteração: se o critério de comparação mudar,
-            precisaremos alterar a classe Product. Ou seja se a classe 
-            quiser modificar a comparação pelo Price em ver pelo Name a classe terá de ser
-            modificada.
-
-            Podemos então usar outra sobrecarga do método "Sort" da
-            classe List:
-            public void Sort(Comparison<T> comparison)
-        */
         static void Main(string[] args)
         {
             List<Product> list = new List<Product>();
@@ -26,9 +15,10 @@ namespace Aula_206
             list.Add(new Product("Notebook", 1200.00));
             list.Add(new Product("Tablet", 450.00));
 
-            list.Sort(CompareProducts);// Utilizar o Sort que recebe um Comparison como argumento que será o método CompareProducts. 
-                                       //Não será necessário modificar Product 
-                                       //apenas mudar em program caso queira organizar pelo Price 
+            //Outra maneira é criar uma variável(comp) para guardar uma referência para a função CompareProducts
+            Comparison<Product> comp = CompareProducts;
+
+            list.Sort(comp);//Passar a variável que guarda a função
 
 
             foreach (Product item in list)
