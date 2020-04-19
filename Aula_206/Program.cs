@@ -15,23 +15,18 @@ namespace Aula_206
             list.Add(new Product("Notebook", 1200.00));
             list.Add(new Product("Tablet", 450.00));
 
-            //Outra maneira é criar uma variável(comp) para guardar uma referência para a função CompareProducts
-            Comparison<Product> comp = CompareProducts;
+            //Outra maneira é criar uma expressão lambda, ou seja uma função que não precisa ser declarada
+            Comparison<Product> comp = (p1, p2) => p1.Name.ToUpper().CompareTo(p2.Name.ToUpper());
 
             list.Sort(comp);//Passar a variável que guarda a função
 
+            //OU
+            //list.Sort((p1, p2) => p1.Name.ToUpper().CompareTo(p2.Name.ToUpper()));
 
             foreach (Product item in list)
             {
                 Console.WriteLine(item);
             }
         }
-
-        //Método static. Esse método fará a mesma função do IComperable que tinha na classe Product
-        static int CompareProducts(Product p1, Product p2)//Os dois produtos para serem comparados
-        {
-            return p1.Name.ToUpper().CompareTo(p2.Name.ToUpper());
-        }
-
     }
 }
