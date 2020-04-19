@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace Aula_206.Entities
 {
-    class Product : IComparable<Product>
+    class Product //A classe não implementa mais a inteface IComperable nem preciso do método do mesmo, com isso a classe estar fechada
     {
         public string Name { get; set; }
         public double Price { get; set; }
@@ -15,14 +15,11 @@ namespace Aula_206.Entities
             Price = price;
         }
 
+
         public override string ToString()
         {
             return Name + ", " + Price.ToString("F2", CultureInfo.InvariantCulture);
         }
 
-        public int CompareTo(Product other)
-        {
-            return Price.CompareTo(other.Price);
-        }
     }
 }
